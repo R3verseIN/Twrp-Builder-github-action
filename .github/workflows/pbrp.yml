@@ -38,7 +38,14 @@ jobs:
             git config --global user.name "Ayush"
             git config --global user.email "ayush@disroot.org"         
             sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* 
+            sudo apt-get remove -y '^ghc-8.*'
+            sudo apt-get remove -y '^dotnet-.*'
+            sudo apt-get remove -y '^llvm-.*'
+            sudo apt-get remove -y 'php.*'
+            sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel
             sudo -E apt-get clean
+            rm -rf /usr/share/dotnet/
+            df -h
             sudo -E apt-get -qq update
             sudo -E apt-get -qq install bc build-essential zip curl libstdc++6 git wget python gcc clang libssl-dev repo rsync flex curl  bison aria2
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
